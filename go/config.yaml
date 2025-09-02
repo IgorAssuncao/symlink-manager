@@ -1,8 +1,16 @@
 tools:
-  - test:
-      path: foo
-      target: bar
-  # - hyprland:
-  # - nvim:
-  # - waybar:
-  # - zellij:
+  hyprland:
+    path: ".config/hypr"
+    target: "dotfiles/config/hypr"
+  alacritty:
+    path: ".config/alacritty"
+    target: "dotfiles/config/alacritty"
+  nvim:
+    path: ".config/nvim"
+    target: "dotfiles/config/nvim"
+  asdf_tool_versions:
+    path: ".tool-versions"
+    target: "dotfiles/config/asdf/.tool-versions"
+  fontconfig:
+    path: ".config/fontconfig"
+    target: "dotfiles/config/fontconfig"
