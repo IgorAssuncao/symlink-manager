@@ -5,36 +5,28 @@ import (
 	"os"
 
 	"github.com/IgorAssuncao/symlink-manager/go/internal/config"
-	"github.com/IgorAssuncao/symlink-manager/go/pkg/filesystem"
 )
 
 func main() {
-	homeDir, err := os.UserHomeDir()
+	println("Hi!")
+
+	currDir, err := os.Getwd()
 	if err != nil {
 		fmt.Printf("%v", err)
 	}
 
-	c := config.GetConfig("config.yaml")
+	println(currDir)
 
-	for name, tool := range c.Tools {
-		path := homeDir + "/" + tool.Path
-		target := homeDir + "/" + tool.Target
+	c := config.Config{}
 
-		fmt.Printf("Checking if %s symlink path exists\n", name)
-		if filesystem.FileExists(path) {
-			fmt.Printf("%s already exists\n", path)
-			fmt.Println()
-			continue
-		}
+	c.GetConfig()
 
-		fmt.Printf("Creating symlink for: %s\n", name)
-		if err := filesystem.CreateSymlink(target, path); err != nil {
-			fmt.Printf("Error creating symlink: %v\n", err)
-		}
-		fmt.Println()
+	for _, t := range c.Tools {
+		fmt.Printf("%v", t)
 	}
-	// TODO v2: Make it run as a daemon (service).
-	// TODO: v3: instead of checking all of them, diff the config file and
+	// TODO: loop through tools array checking if symlink or file exists,
+	// and then creating the symlink.
+	// v2: instead of checking all of them, diff the config file and
 	// change only the key that was changed.
 }
 

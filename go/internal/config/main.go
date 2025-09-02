@@ -8,7 +8,7 @@ import (
 )
 
 type Config struct {
-	Tools map[string]Tool `yaml:"tools"`
+	Tools []map[string]Tool `yaml:"tools"`
 }
 
 type Tool struct {
@@ -16,9 +16,8 @@ type Tool struct {
 	Target string `yaml:"target"`
 }
 
-func GetConfig(configPath string) *Config {
-	c := &Config{}
-	yamlFile, err := os.ReadFile(configPath)
+func (c *Config) GetConfig() *Config {
+	yamlFile, err := os.ReadFile("config.yaml")
 	if err != nil {
 		log.Printf("%v", err)
 	}
