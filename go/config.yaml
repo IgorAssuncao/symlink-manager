@@ -1,0 +1,8 @@
+tools:
+  - test:
+      path: foo
+      target: bar
+  # - hyprland:
+  # - nvim:
+  # - waybar:
+  # - zellij:
