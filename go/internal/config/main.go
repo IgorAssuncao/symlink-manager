@@ -16,7 +16,7 @@ type Tool struct {
 	Target string `yaml:"target"`
 }
 
-func GetConfig(configPath string) *Config {
+func NewConfig(configPath string) *Config {
 	c := &Config{}
 	yamlFile, err := os.ReadFile(configPath)
 	if err != nil {
