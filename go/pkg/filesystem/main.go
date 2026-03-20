@@ -11,10 +11,10 @@ func CreateSymlink(target string, symlinkPath string) error {
 }
 
 func FileExists(filepath string) bool {
-	if _, err := os.Stat(filepath); err!= nil {
+	if _, err := os.Stat(filepath); err != nil {
 		log.Printf("Error from FileExists: %v\n", err)
 		return false
-	} 
+	}
 	return true
 }
 
@@ -28,10 +28,9 @@ func GetHomeDir() string {
 }
 
 func GetFileLastModified(configFilePath string) time.Time {
-	fileInfo, err:= os.Stat(configFilePath)
+	fileInfo, err := os.Stat(configFilePath)
 	if err != nil {
-		log.Printf("%v", err) 
+		log.Printf("%v", err)
 	}
 	return fileInfo.ModTime()
 }
-
